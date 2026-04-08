@@ -1,22 +1,23 @@
 // Complete the js code
-class Car {
-	constructor(make,model){
+function Car(make,model) {
 		this.make = make;
 		this.model = model;
-	}
-	getMakeModel(){
-		return `${this.make} ${this.model}`;
-	}
 }
 
- class SportsCar extends Car {
-	constructor(make,model,topSpeed){
-		super(make,model);
+Car.prototype.getMakeModel = function(){
+	return `${this.make} ${this.model}`;
+}
+
+ class SportsCar(make,model,topSpeed) {
+		Car.call(this,make,model);
 		this.topSpeed = topSpeed;
-	}
-	getTopSpeed(){
-		return this.topSpeed;
-	}
+}
+
+SportsCar.prototype = Obeject.create(Car.prototype);
+SportsCar.prototype.constructor = SportsCar;
+
+SportsCar.prototype.getTopSpeed = function(){
+	return this.topSpeed;
 }
 
 // Do not change the code below
